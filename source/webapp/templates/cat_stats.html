@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Информация</title>
+</head>
+<body>
+<img class="cat_img" src="{{ mood }}" alt="#">
+<div class="stat">
+    <p class="cat_stats">Кот - {{ name }}</p>
+    <p class="cat_stats">Возраст - {{ age }} год</p>
+    <p class="cat_stats">Уровень счастья - {{ happines }}</p>
+    <p class="cat_stats">Уровень сытости - {{ satiety }}</p>
+</div>
+<br>
+<label for="action">Выберите действие</label>
+<form class="from_stats" action="/cat_stats" method="post">
+    {% csrf_token %}
+    <select id="action" name="action" required>
+        <option value="play">поиграть с котом</option>
+        <option value="feed">покормить кота</option>
+        <option value="sleep">уложить спать кота</option>
+    </select>
+    <br>
+    <input type="submit" value="подтвердить">
+</form>
+</body>
+</html>
